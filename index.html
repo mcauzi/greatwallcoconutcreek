@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Great Wall – Coconut Creek, FL</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red:    #C0392B;
+    --gold:   #D4A017;
+    --ink:    #1A1208;
+    --cream:  #FAF6EE;
+    --mist:   #EDE6D8;
+    --paper:  #F5EFE3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(250,246,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,160,23,0.25);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--red); letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--ink); opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--red); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '大壁';
+    position: absolute; right: -40px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(200px, 28vw, 380px);
+    font-weight: 700;
+    color: rgba(192,57,43,0.055);
+    line-height: 1;
+    pointer-events: none; user-select: none;
+    letter-spacing: -0.05em;
+  }
+  .hero-inner { max-width: 640px; position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow span {
+    display: inline-block; width: 28px; height: 1px;
+    background: var(--gold); vertical-align: middle;
+    margin-right: 10px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero p {
+    font-size: 1.1rem; font-weight: 300; line-height: 1.75;
+    color: #4a3f2f; max-width: 480px;
+    margin-bottom: 44px;
+  }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--red); color: #fff;
+    padding: 15px 36px; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #a0302a; transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent; color: var(--ink);
+    padding: 14px 36px;
+    border: 1.5px solid rgba(26,18,8,0.3);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--red); color: var(--red); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; gap: 20px;
+    padding: 0 48px; margin: 0;
+  }
+  .divider-line { flex: 1; height: 1px; background: rgba(212,160,23,0.3); }
+  .divider-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.4rem; color: var(--gold); opacity: 0.6;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--ink);
+    padding: 72px 48px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: center;
+  }
+  .about-strip h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700; color: #fff; line-height: 1.2;
+  }
+  .about-strip h2 span { color: var(--gold); }
+  .about-strip p {
+    font-size: 1rem; font-weight: 300;
+    line-height: 1.8; color: rgba(255,255,255,0.65);
+  }
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 40px;
+    grid-column: 1 / -1;
+  }
+  .stat {
+    background: rgba(255,255,255,0.04);
+    padding: 28px 24px; text-align: center;
+  }
+  .stat-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.4rem; font-weight: 700;
+    color: var(--gold); display: block;
+  }
+  .stat-label {
+    font-size: 0.78rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-top: 4px; display: block;
+  }
+
+  /* ── MENU ── */
+  .menu-section { padding: 96px 48px; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after {
+    content: ''; flex: 0 0 40px; height: 1px; background: var(--gold);
+  }
+  .menu-section h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--ink);
+    margin-bottom: 56px;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+  .menu-card {
+    background: var(--paper);
+    padding: 32px 28px;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .menu-card:hover { background: var(--mist); }
+  .menu-card::before {
+    content: attr(data-char);
+    position: absolute; bottom: -12px; right: -4px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 5rem; font-weight: 700;
+    color: rgba(192,57,43,0.07);
+    line-height: 1; pointer-events: none;
+  }
+  .card-tag {
+    font-size: 0.68rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--red);
+    font-weight: 600; margin-bottom: 10px;
+  }
+  .card-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .card-desc {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.65;
+    color: #6b5c48;
+  }
+  .card-price {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1rem; font-weight: 600;
+    color: var(--red);
+  }
+
+  /* ── CONDIMENTS SECTION ── */
+  .condiments-section {
+    background: var(--mist);
+    padding: 96px 48px;
+  }
+  .condiment-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2px; margin-top: 48px;
+  }
+  .condiment-item {
+    background: var(--cream);
+    padding: 24px 22px;
+    display: flex; align-items: flex-start; gap: 14px;
+    transition: background 0.2s;
+  }
+  .condiment-item:hover { background: #fff; }
+  .condiment-dot {
+    flex-shrink: 0;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); margin-top: 6px;
+  }
+  .condiment-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--ink); line-height: 1.3;
+  }
+  .condiment-note {
+    font-size: 0.8rem; font-weight: 300;
+    color: #7a6a52; margin-top: 3px; line-height: 1.4;
+  }
+
+  /* ── VISIT ── */
+  .visit-section {
+    background: var(--red);
+    padding: 80px 48px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: center;
+  }
+  .visit-section h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; color: #fff; line-height: 1.15;
+  }
+  .visit-section h2 span { color: var(--gold); }
+  .visit-details { display: flex; flex-direction: column; gap: 28px; }
+  .visit-row { display: flex; align-items: flex-start; gap: 18px; }
+  .visit-icon {
+    font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;
+  }
+  .visit-label {
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    display: block; margin-bottom: 4px;
+  }
+  .visit-value {
+    font-size: 1rem; font-weight: 400; color: #fff; line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 40px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--gold); text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  footer p {
+    font-size: 0.78rem; color: rgba(255,255,255,0.3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero::before { font-size: 160px; right: -20px; opacity: 0.6; }
+    .about-strip { grid-template-columns: 1fr; padding: 56px 24px; }
+    .stats { grid-template-columns: 1fr 1fr 1fr; }
+    .menu-section, .condiments-section { padding: 64px 24px; }
+    .visit-section { grid-template-columns: 1fr; padding: 56px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    .divider { padding: 0 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  /* ── FADE-IN ── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>长</span>&nbsp;Great Wall</a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#condiments">Condiments</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#order" class="btn-primary" style="padding:10px 22px">Order Online</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow fade-in"><span></span>Coconut Creek, Florida</p>
+    <h1 class="fade-in">
+      Authentic<br />Chinese<br /><em>Done Right.</em>
+    </h1>
+    <p class="fade-in">Family recipes, fresh ingredients, and over 20 years of feeding the South Florida community. Dine in, take out, or order for delivery.</p>
+    <div class="btn-group fade-in">
+      <a href="#order" class="btn-primary">Order Online</a>
+      <a href="#menu" class="btn-secondary">View Menu</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-char">壁</div><div class="divider-line"></div></div>
+
+<!-- ABOUT -->
+<section class="about-strip">
+  <div class="fade-in">
+    <h2>More than<br /><span>a takeout spot.</span></h2>
+  </div>
+  <div class="fade-in">
+    <p>Great Wall has been a staple of Coconut Creek for decades — serving Cantonese classics, regional specialties, and the kind of house sauces you'll find yourself thinking about on the drive home. Every order is made with care and quality ingredients.</p>
+  </div>
+  <div class="stats fade-in">
+    <div class="stat"><span class="stat-number">20+</span><span class="stat-label">Years Open</span></div>
+    <div class="stat"><span class="stat-number">80+</span><span class="stat-label">Menu Items</span></div>
+    <div class="stat"><span class="stat-number">5★</span><span class="stat-label">Community Rated</span></div>
+  </div>
+</section>
+
+<!-- MENU HIGHLIGHTS -->
+<section class="menu-section" id="menu">
+  <p class="section-label">Our Favorites</p>
+  <h2>Popular Dishes</h2>
+  <div class="menu-grid">
+    <div class="menu-card fade-in" data-char="炒">
+      <p class="card-tag">Chef's Choice</p>
+      <p class="card-name">General Tso's Chicken</p>
+      <p class="card-desc">Crispy fried chicken tossed in a sweet and spicy house glaze. Served with steamed rice.</p>
+      <span class="card-price">$13.95</span>
+    </div>
+    <div class="menu-card fade-in" data-char="虾">
+      <p class="card-tag">Seafood</p>
+      <p class="card-name">Shrimp with Lobster Sauce</p>
+      <p class="card-desc">Plump shrimp in a savory egg-white sauce with tender scallions and peas.</p>
+      <span class="card-price">$15.95</span>
+    </div>
+    <div class="menu-card fade-in" data-char="牛">
+      <p class="card-tag">Beef</p>
+      <p class="card-name">Mongolian Beef</p>
+      <p class="card-desc">Wok-seared flank steak with green onions in a dark, caramel-tinged soy glaze.</p>
+      <span class="card-price">$14.95</span>
+    </div>
+    <div class="menu-card fade-in" data-char="鸭">
+      <p class="card-tag">House Special</p>
+      <p class="card-name">Roast Duck</p>
+      <p class="card-desc">Slow-roasted whole duck with crispy skin, served over white rice with plum dipping sauce.</p>
+      <span class="card-price">$18.95</span>
+    </div>
+    <div class="menu-card fade-in" data-char="面">
+      <p class="card-tag">Noodles</p>
+      <p class="card-name">Lo Mein – House Style</p>
+      <p class="card-desc">Soft egg noodles stir-fried with shrimp, chicken, pork, and vegetables in savory sauce.</p>
+      <span class="card-price">$12.95</span>
+    </div>
+    <div class="menu-card fade-in" data-char="汤">
+      <p class="card-tag">Soup</p>
+      <p class="card-name">Hot & Sour Soup</p>
+      <p class="card-desc">Silky broth with tofu, bamboo shoots, shiitake mushrooms, and a peppery vinegar bite.</p>
+      <span class="card-price">$4.95</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-char">酱</div><div class="divider-line"></div></div>
+
+<!-- CONDIMENTS -->
+<section class="condiments-section" id="condiments">
+  <p class="section-label">Finishing Touches</p>
+  <h2 style="font-family:'Noto Serif SC',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--ink);">Condiments &amp; Sauces</h2>
+  <div class="condiment-list">
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Duck Sauce</p><p class="condiment-note">Sweet apricot-plum blend. Classic with egg rolls.</p></div>
+    </div>
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Hot Mustard</p><p class="condiment-note">Sharp, sinus-clearing heat. A house staple.</p></div>
+    </div>
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Soy Sauce</p><p class="condiment-note">Light and dark varieties available upon request.</p></div>
+    </div>
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Chili Oil</p><p class="condiment-note">House-made. Sesame-forward with a slow burn.</p></div>
+    </div>
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Plum Sauce</p><p class="condiment-note">Tangy and mildly sweet. Pairs with roasted meats.</p></div>
+    </div>
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Oyster Sauce</p><p class="condiment-note">Rich, umami-deep. Great on steamed vegetables.</p></div>
+    </div>
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Sriracha</p><p class="condiment-note">Bright red chili heat with a touch of garlic.</p></div>
+    </div>
+    <div class="condiment-item fade-in">
+      <div class="condiment-dot"></div>
+      <div><p class="condiment-name">Black Bean Sauce</p><p class="condiment-note">Fermented, earthy depth. Classic with stir-fry.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit-section" id="visit">
+  <div class="fade-in">
+    <h2>Come find<br /><span>the Wall.</span></h2>
+    <div style="margin-top:32px">
+      <a href="tel:+19547735888" class="btn-secondary" style="border-color:rgba(255,255,255,0.4);color:#fff;">Call to Order</a>
+    </div>
+  </div>
+  <div class="visit-details fade-in">
+    <div class="visit-row">
+      <span class="visit-icon">📍</span>
+      <div>
+        <span class="visit-label">Address</span>
+        <span class="visit-value">4500 Lyons Rd, Suite 120<br />Coconut Creek, FL 33073</span>
+      </div>
+    </div>
+    <div class="visit-row">
+      <span class="visit-icon">🕐</span>
+      <div>
+        <span class="visit-label">Hours</span>
+        <span class="visit-value">Mon–Thu: 11am – 9:30pm<br />Fri–Sat: 11am – 10:30pm<br />Sunday: 12pm – 9:30pm</span>
+      </div>
+    </div>
+    <div class="visit-row">
+      <span class="visit-icon">📞</span>
+      <div>
+        <span class="visit-label">Phone</span>
+        <span class="visit-value">(954) 773-5888</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="#">长城 · Great Wall</a>
+  <p>© 2026 Great Wall Chinese Restaurant · Coconut Creek, FL</p>
+  <p style="color:rgba(255,255,255,0.2);font-size:0.7rem">This is a fan redesign concept.</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
